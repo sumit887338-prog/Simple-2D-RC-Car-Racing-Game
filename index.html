@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RC Car Racing Game</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #222;
+}
+#gameArea {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(#555, #333);
+}
+.car {
+  width: 50px;
+  height: 80px;
+  position: absolute;
+  bottom: 20px;
+}
+#car1 {
+  left: 30%;
+  background: red;
+}
+#car2 {
+  left: 60%;
+  background: blue;
+}
+#finishLine {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 10px;
+  background: yellow;
+}
+#winner {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="gameArea">
+  <div id="finishLine"></div>
+  <div id="car1" class="car"></div>
+  <div id="car2" class="car"></div>
+  <div id="winner"></div>
+</div>
+
+<script>
+let car1 = document.getElementById("car1");
+let car2 = document.getElementById("car2");
+let winnerText = document.getElementById("winner");
+
+let car1Top = window.innerHeight - 100;
+let car2Top = window.innerHeight - 100;
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "w") {
+    car1Top -= 20;
+    car1.style.top = car1Top + "px";
+  }
+  if (e.key === "ArrowUp") {
+    car2Top -= 20;
+    car2.style.top = car2Top + "px";
+  }
+
+  if (car1Top <= 10) {
+    winnerText.innerText = "Player 1 Wins!";
+    winnerText.style.display = "block";
+  }
+
+  if (car2Top <= 10) {
+    winnerText.innerText = "Player 2 Wins!";
+    winnerText.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
