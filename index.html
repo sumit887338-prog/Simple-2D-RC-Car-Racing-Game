@@ -18,7 +18,6 @@ body {
   width: 50px;
   height: 80px;
   position: absolute;
-  bottom: 20px;
 }
 #car1 {
   left: 30%;
@@ -61,10 +60,15 @@ let car1 = document.getElementById("car1");
 let car2 = document.getElementById("car2");
 let winnerText = document.getElementById("winner");
 
-let car1Top = window.innerHeight - 100;
-let car2Top = window.innerHeight - 100;
+let car1Top = window.innerHeight - 120;
+let car2Top = window.innerHeight - 120;
+
+car1.style.top = car1Top + "px";
+car2.style.top = car2Top + "px";
 
 document.addEventListener("keydown", function(e) {
+  if (winnerText.style.display === "block") return;
+
   if (e.key === "w") {
     car1Top -= 20;
     car1.style.top = car1Top + "px";
